@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>movebox.html</title>
+    <style>
+        .container {
+            width: 520px;
+            height: 520px;
+            background-color: antiquewhite;
+            border: 1px solid;
+        }
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: skyblue;
+            margin: 10px;
+            transition : margin 0.4s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box">LR : <span>0</span> TD : <span>0</span></div>
+    </div>
+    <div style="width: 768px; border: 1px;">
+        <button onclick="moveLR(-100)">&lAarr;</button>
+        <button onclick="moveLR(100)">&rAarr;</button>
+        <button onclick="moveTD(-100)">&uArr;</button>
+        <button onclick="moveTD(100)">&dArr;</button>
+    </div>
+
+    <script>
+        let marginLR = 0;
+        let marginTD = 0;
+
+        let moveLR = (lr) => {
+            if(marginLR+lr >= 0 && marginLR+lr <= 400) {
+                document.querySelector(".box").style.backgroundColor ="skyblue";
+                marginLR += lr;
+                document.querySelector(".box").style.marginLeft = marginLR+"px";
+                document.querySelector(".box").innerText = "LR : "+marginLR/100+" TD : "+marginTD/100
+
+            } else {
+                document.querySelector(".box").style.backgroundColor = "salmon";
+            }
+        }
+
+        let moveTD = (td) => {
+            if(marginTD+td >= 0 && marginTD+td <= 400) {
+                document.querySelector(".box").style.backgroundColor ="skyblue";
+                marginTD += td;
+                document.querySelector(".box").style.marginTop = marginTD+"px";
+                document.querySelector(".box").innerText = "LR : "+marginLR/100+" TD : "+marginTD/100
+            } else {
+                document.querySelector(".box").style.backgroundColor = "salmon";
+            }
+        }
+
+        window.addEventListener("leftKeydown",()=>{
+            moveLR(-100);
+        });
+
+    </script>
+</body>
+</html>
+
+
+

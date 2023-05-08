@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>elephant</title>
+    <style>
+        .container {
+            width: 768px;
+            margin: 0 auto;
+            background-color: antiquewhite;
+            text-align: center;
+        }
+        .refr {
+            width: 100px;
+            margin: 10px auto;
+            padding: 10px;
+            text-align: center;
+            background-color: darkgrey;
+        }
+        .btn {
+            width: 100px;
+            margin: 10px auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>코끼리를 냉장고에 넣기</h1>
+        <div class="refr">
+            냉장고 닫힘
+        </div>
+        <div >
+            <button id="openbtn" class="btn" onclick="refrDoor(true)">냉장고 열기</button> <br>
+            <button id="closebtn" class="btn" onclick="refrDoor(false)">냉장고 닫기</button> <br>
+            <button id="pushbtn" class="btn" onclick="pushElph()">코끼리를 냉장고에 넣기</button> <br>
+            <button id="pullbtn" class="btn" onclick="pushElph()">코끼리를 냉장고에서 꺼내기</button>
+        </div>
+    </div>
+    
+    <script>
+        let isInElph = false;
+        let isOpenRefr = false;
+
+        //코끼리를 냉장고에 넣기
+        let pushElph = () => {
+            isInElph = isInElph ? !confirm("코끼리를 꺼내겠습니까?") : confirm("코끼리를 집어넣겠습니까?") ;
+            refriger();    
+        }
+
+        let refrDoor = (isOpen) => {
+            isOpenRefr = isOpen;
+            refriger();
+        }
+
+        let refriger = () => {
+            let temp = isOpenRefr ? isInElph ? 
+                [[`냉장고 열림 코끼리`,"yellow"], ['hidden', 'visible', 'hidden', 'visible']] :
+                [["냉장고 열림", "yellow"], ['hidden', 'visible', 'visible', 'hidden']] : 
+                [["냉장고 닫힘", "darkgrey"], ['visible', 'hidden', 'hidden', 'hidden']];
+            
+            document.querySelector(".refr").innerHTML = temp[0][0];
+            document.querySelector(".refr").style.backgroundColor = temp[0][1];
+
+            openbtn.style.visibility = temp[1][0];
+            closebtn.style.visibility = temp[1][1];
+            pushbtn.style.visibility = temp[1][2];
+            pullbtn.style.visibility = temp[1][3];
+        }
+
+        refriger();
+
+    </script>
+</body>
+</html>

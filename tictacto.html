@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TicTacTo</title>
+    <style>
+        .wrapper {
+            display: flex;
+        }
+        .box {
+            width: 100px;
+            height: 100px;
+            border: 1px solid red;
+            cursor: pointer;
+            background-color: beige;
+            text-align: center;
+            font-size: 3em;
+        }
+    </style>
+</head>
+<body>
+    <h1>원하는 박스 클릭</h1>
+    <div class="wrapper">
+        <div class="box">1</div>
+        <div class="box">2</div>
+        <div class="box">3</div>
+    </div>
+    <div class="wrapper">
+        <div class="box">4</div>
+        <div class="box">5</div>
+        <div class="box">6</div>
+    </div>
+    <div class="wrapper">
+        <div class="box">7</div>
+        <div class="box">8</div>
+        <div class="box">9</div>
+    </div>
+
+    <script>
+        let divs = document.querySelectorAll(".box")
+        let cnt = 0;
+        let user = {0 : "O", 1 : "X"};
+
+        divs.forEach((item)=>{
+            // item은 div의 참조값
+            item.addEventListener("click", ()=>{
+                if(event.target.innerText != "O" && event.target.innerText != "X") {
+                    cnt%2==0 ? event.target.innerText = "O" : event.target.innerText = "X";
+                    cnt++;
+                }
+            })
+        })
+        
+        
+        
+    </script>
+</body>
+</html>
